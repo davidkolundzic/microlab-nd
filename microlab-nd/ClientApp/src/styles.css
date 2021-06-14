@@ -1,0 +1,20 @@
+.microlab-bg-gray{
+  /* if linear gradient not supported */
+  background-color: gray;
+  background: linear-gradient(gray 400px, white 10px);
+}
+
+
+/* override bootstrap */
+
+.btn-outline-light:not(:disabled):not(.disabled).active, .btn-outline-light:not(:disabled):not(.disabled):active, .show>.btn-outline-light.dropdown-toggle {
+    color: #212529!important;
+    /* background-color: #f8f9fa; */
+    /* border-color: #f8f9fa; */
+}
+.btn-outline-light:hover {
+  color: #212529!important;
+  /* background-color: #f8f9fa; */
+  /* border-color: #f8f9fa; */
+}
+

@@ -1,0 +1,32 @@
+<body>
+  <app-nav-menu></app-nav-menu>
+  <div class="container-fluid microlab-bg-gray">
+    <div class="row">
+      <div class="col-1 col-lg-2"></div>
+      <div class="col-2 col-lg-1 px-0 pt-4 d-none d-lg-block">
+          <div 
+            class="btn btn-block btn-outline-light text-light text-left rounded-0 btn-sm border-right-0 "
+            [routerLink]="['/']" 
+            routerLinkActive="active" 
+            [routerLinkActiveOptions]="{exact:true}">Home</div>
+          <div 
+            class="btn btn-block btn-outline-light text-light text-left rounded-0 btn-sm border-right-0 "
+            [routerLink]="['/app']" 
+            routerLinkActive="active" >Menüpunkt 1</div>
+          <div 
+            class="btn btn-block btn-outline-light text-light text-left rounded-0 btn-sm border-right-0 "
+            [routerLink]="['/fetch-data']" 
+            routerLinkActive="active"
+            >
+            Menüpunkt 2</div>
+
+      </div>
+      <div class="col-10 col-lg-6 bg-white pt-4 px-4 corners" style="min-height: 410px;">
+          <div class="bottom left"></div>
+          <div class="bottom right"></div>
+          <router-outlet></router-outlet>
+      </div>
+      <div class="col-1 col-lg-3"></div>
+    </div>
+  </div> 
+</body>

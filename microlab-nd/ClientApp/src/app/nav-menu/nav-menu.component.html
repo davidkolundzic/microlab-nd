@@ -1,0 +1,57 @@
+<nav class="navbar navbar-light bg-white mb-3 pl-0 w-100 d-flex"  >
+  
+      <div class="col-8 col-lg-8 px-0">
+        <svg height="50" width="100%">
+          <line
+            x1="0"
+            y1="80%"
+            x2="100%"
+            y2="80%"
+            style="stroke: gray; stroke-width: 1"
+          />
+        </svg>
+      </div>
+      <div class="col-4 col-lg-4">
+        <a class="navbar-brandborder text-right" [routerLink]="['/']">
+          <img class="ml-0" src="./assets/logo.jpg" alt="" srcset="" />
+        </a>
+      </div>
+   
+      <div class="col-12">
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-toggle="collapse"
+          data-target=".navbar-collapse"
+          aria-label="Toggle navigation"
+          [attr.aria-expanded]="isExpanded"
+          (click)="toggle()"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="navbar-collapse collapse justify-content-end"
+          [ngClass]="{ show: isExpanded }"
+        >
+          <ul class="navbar-nav flex-grow d-lg-none">
+            <li
+              class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/counter']"
+                >Counter</a
+              >
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
+                >Fetch data</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>   
+</nav>

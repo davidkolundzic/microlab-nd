@@ -1,0 +1,231 @@
+<div class="card">
+  <img src="" alt="" />
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <form
+      (ngSubmit)="loginform.valid && onSubmit(loginform)"
+      #loginform="ngForm"
+      autocomplete="off"
+      novalidate
+    >
+      <div class="row">
+        <div class="col-12 col-md-3">
+          <div class="form-group">
+            <label for="date">Datum (TT/MM)</label>
+            <input
+              id="date"
+              class="form-control"
+              type="text"
+              name="date"
+              required
+              placeholder="Datepicker"
+              [(ngModel)]="note.noteDate"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+            />
+            <small>&nbsp;</small
+            ><small
+              class="text-danger"
+              *ngIf="
+                loginform.controls.date?.invalid &&
+                (loginform.controls.date?.touched || mouseoverSubmit)
+              "
+            >
+              *Required
+            </small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label for="description">Bezeichnung</label>
+            <input
+              required
+              id="description"
+              class="form-control"
+              type="text"
+              name="description"
+              [(ngModel)]="note.description"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                loginform.controls.description?.invalid &&
+                (loginform.controls.description?.touched || mouseoverSubmit)
+              "
+            >
+              *Required
+            </small>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="form-group">
+            <label for="date">Erinnerung</label>
+            <select
+              required
+              id="ddlreminder"
+              class="form-control"
+              name="ddlreminder"
+              [(ngModel)]="note.reminder"
+              (ngModelChange)="selectRemainder($event)"
+              #ctrl="ngModel"
+            >
+              <option [ngValue]="null" disabled>-- bitte auswählen --</option>
+              <option [ngValue]="1">1 Tag</option>
+              <option [ngValue]="2">2 Tag</option>
+              <option [ngValue]="3">3 Tag</option>
+              <option [ngValue]="4">4 Tag</option>
+              <option [ngValue]="7">1 Woche</option>
+              <option [ngValue]="14">2 Woche</option>
+            </select>
+            <small class="text-danger" *ngIf="!ddlValid && mouseoverSubmit">
+              *Required
+            </small>
+          </div>
+        </div>
+      </div>
+      <!-- <a href="#" class="btn btn-secondary pull-right btn-sm float-right">SPEICHERN</a> -->
+      <span
+        (mouseenter)="mouseoverSubmit = true"
+        (mouseleave)="mouseoverSubmit = false"
+      >
+        <button
+          class="btn btn-secondary pull-right btn-sm float-right"
+          [disabled]="loginform.invalid"
+          type="submit"
+        >
+          SPEICHERN
+        </button>
+      </span>
+      <!-- <a href="#" >SPEICHERN</a> -->
+    </form>
+  </div>
+</div>
+
+<div class="card mt-5">
+  <div class="card-body pt-0">
+    <div class="table-responsive-md">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="border-top-0">Datum</th>
+            <th class="border-top-0">Bezeichnung</th>
+            <th class="border-top-0">Erinnerung</th>
+            <th class="border-top-0" width="200">Aktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of notes; let i = index">
+            <td>{{ item.noteDate | date: "dd.MM.yy" }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ reminders[item.reminder] }}</td>
+            <td width="200">
+              <div
+                class="btn btn-light btn-sm"
+                (click)="openModal(template, i)"
+              >
+                bearbeiten
+              </div>
+              |
+              <div class="btn btn-light btn-sm" (click)="onDelete(i)">
+                löschen
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot *ngIf="notes.length < 1">
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- <a href="#" class="btn btn-primary pull-right"></a> -->
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="date">Datum (TT/MM)</label>
+      <input
+        id="dateEdit"
+        class="form-control"
+        type="text"
+        name="dateEdit"
+        required
+        placeholder="Datepicker"
+        [(ngModel)]="editNote.noteDate"
+        bsDatepicker
+        [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+      />
+      <small
+        class="text-danger"
+        *ngIf="
+          loginform.controls.date?.invalid &&
+          (loginform.controls.date?.touched || mouseoverSubmit)
+        "
+      >
+        *Required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="description">Bezeichnung</label>
+      <input
+        required
+        id="description"
+        class="form-control"
+        type="text"
+        name="description"
+        [(ngModel)]="editNote.description"
+      />
+      <small
+        class="text-danger"
+        *ngIf="
+          loginform.controls.description?.invalid &&
+          (loginform.controls.description?.touched || mouseoverSubmit)
+        "
+      >
+        *Required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="date">Erinnerung</label>
+      <select
+        required
+        id="ddlreminder"
+        class="form-control"
+        name="ddlreminder"
+        [(ngModel)]="editNote.reminder"
+        (ngModelChange)="selectRemainder($event)"
+        #ctrl="ngModel"
+      >
+        <option [ngValue]="null" disabled>-- bitte auswählen --</option>
+        <option [ngValue]="1">1 Tag</option>
+        <option [ngValue]="2">2 Tag</option>
+        <option [ngValue]="3">3 Tag</option>
+        <option [ngValue]="4">4 Tag</option>
+        <option [ngValue]="7">1 Woche</option>
+        <option [ngValue]="14">2 Woche</option>
+      </select>
+      <small class="text-danger" *ngIf="!ddlValid && mouseoverSubmit">
+        *Required
+      </small>
+    </div>
+    <button class="btn btn-secondary btn-small float-right" (click)="decline()">
+      STORNIEREN
+    </button>
+    <button
+      class="btn btn-secondary btn-small mr-2 float-right"
+      (click)="confirm()"
+    >
+      SPEICHERN
+    </button>
+  </div>
+</ng-template>

@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "microlab-nd", "microlab-nd\microlab-nd.csproj", "{E1776BD3-B629-4F49-8B17-9FFC53904C91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microlab-nd", "microlab-nd\microlab-nd.csproj", "{E1776BD3-B629-4F49-8B17-9FFC53904C91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{B5BFCEDD-F34F-470D-95FE-E3CB42A3D542}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{B5BFCEDD-F34F-470D-95FE-E3CB42A3D542}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "microlab-console", "microlab-console\microlab-console.csproj", "{AE805626-E30D-4975-947B-EBC02C29EB6E}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{42745B06-742F-4FCB-A2A6-423B4308B4CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microlab-console", "microlab-console\microlab-console.csproj", "{AE805626-E30D-4975-947B-EBC02C29EB6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +27,6 @@ Global
 		{AE805626-E30D-4975-947B-EBC02C29EB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE805626-E30D-4975-947B-EBC02C29EB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE805626-E30D-4975-947B-EBC02C29EB6E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42745B06-742F-4FCB-A2A6-423B4308B4CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42745B06-742F-4FCB-A2A6-423B4308B4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42745B06-742F-4FCB-A2A6-423B4308B4CC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{42745B06-742F-4FCB-A2A6-423B4308B4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42745B06-742F-4FCB-A2A6-423B4308B4CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42745B06-742F-4FCB-A2A6-423B4308B4CC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

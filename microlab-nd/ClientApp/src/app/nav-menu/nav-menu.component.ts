@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { USER } from "../model/note-model";
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
-
+  user = USER;
   collapse() {
     this.isExpanded = false;
   }

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { Note, REMAINDERS, USER } from "../model/note-model";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
-import {NotesService} from "../notes.service";
+import { NotesService } from "../notes.service";
 
 @Component({
   selector: "app-notes",
@@ -42,7 +42,6 @@ export class NotesComponent implements OnInit {
     this.note.reminder = null;
     this.notesService.getNotes(this.user.Id).subscribe(
       res => {
-        console.log(res);
         this.notes = res;
       },
       err=> {
@@ -71,8 +70,9 @@ export class NotesComponent implements OnInit {
   }
  
   onDelete(index) {
+    console.log("DELETE");
     if (this.notes[index].id || this.notes[index].id > 0) {
-      this.notesService.removeNote(index).subscribe(
+      this.notesService.removeNote(this.notes[index].id).subscribe(
         res=> {
           this.notes.splice(index, 1)
         }
@@ -106,7 +106,16 @@ export class NotesComponent implements OnInit {
     this.modalRef = this.modalService.show(template, this.config);
   }
   confirm(): void {
-    this.modalRef.hide();
+     this.modalRef.hide();
+     console.log(this.editNote);
+     this.notesService.updateNote(this.editNote ).subscribe(
+       res =>{
+
+       }, 
+       err=>{
+         console.log(err);
+       }
+     )
   }
   decline(): void {
     this.notes[this.editNoteIndex] = this.copyNote;

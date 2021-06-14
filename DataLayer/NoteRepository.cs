@@ -38,14 +38,23 @@ namespace DataLayer
 
         
 
-        public void Remove(int Id)
+        public void Remove(int id)
         {
-            this.db.Execute("DELETE * FROM Note WHERE Id = @Id", new { Id });
+            this.db.Execute("DELETE FROM Notes WHERE id = @id", new { id });
         }
 
-        public Note Update(Note contact)
+        public Note Update(Note note)
         {
-            throw new NotImplementedException();
+            var sql =
+                @"UPDATE notes " +
+                "SET NoteDate = @NoteDate, " +
+                "   Description = @Description, " +
+                "   Reminder = @Reminder, " +
+                "   notified = @Notified " +
+                "WHERE Id = @Id";
+            this.db.Execute(sql, note);
+            return note;
         }
     }
+    
 }

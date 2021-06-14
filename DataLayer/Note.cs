@@ -16,5 +16,7 @@ namespace DataLayer
         public string description{ get; set; }
         public int reminder { get; set; }
 
+        public int notified { get; set; }
+
     }
 }

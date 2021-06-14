@@ -17,6 +17,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BlockUIService } from './block-ui.service';
 import { RemindersComponent } from './reminders/reminders.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavMenuLeftComponent } from './nav-menu-left/nav-menu-left.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     FetchDataComponent,
     NotesComponent,
-    RemindersComponent
+    RemindersComponent,
+    NavMenuLeftComponent
   ],
   imports: [
     BrowserModule,

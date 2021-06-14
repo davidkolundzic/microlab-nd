@@ -1,6 +1,7 @@
+export const IS_NOTIFIED = 1;
 export const USER = {
-  Id: 7,
-  FirstName: "Joe",
+  Id: 3,
+  FirstName: "Giannis",
   LasName: "Blow",
   Email: "joe.blow@gmail.com",
   Company: "Microsoft",
@@ -20,4 +21,5 @@ export class Note {
   noteDate: Date = null;
   description: string = "";
   reminder: number = null;
+  notified: number = 0;
 }
